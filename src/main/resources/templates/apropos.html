@@ -5,11 +5,35 @@
 <div th:replace="~{fragments :: header}"></div>
 
 <main class="container">
-    <section class="card">
-        <h2>À propos</h2>
-        <p th:text="${aboutIntro}"></p>
+
+    <!-- Bandeau principal : photo + présentation -->
+    <section class="item">
+        <div class="grid cols-2 apropos-section">
+            <!-- Photo -->
+            <div class="photo-container">
+                <!-- Remplace /img/photo.jpg par le nom réel si différent -->
+                <img th:src="@{/img/moi_cv_photo.jpg}" alt="moi_cv_photo" class="profile-photo">
+            </div>
+
+            <!-- Texte -->
+            <div>
+                <h2 class="mt-0">À propos</h2>
+                <p th:text="${aboutIntro}">
+                    <!-- Texte par défaut (sera remplacé par Thymeleaf si fourni) -->
+                    Je me reconvertis vers le développement Java avec une approche orientée qualité,
+                    lisibilité et tests. Mon ADN : comprendre un besoin, proposer une solution simple
+                    et fiable, livrer avec soin.
+                </p>
+
+                <h3>Ce que je fais</h3>
+                <ul>
+                    <li th:each="w : ${whatIDo}" th:text="${w}">Développement d’applications web en Java / Spring Boot.</li>
+                </ul>
+            </div>
+        </div>
     </section>
 
+    <!-- Trois blocs complémentaires -->
     <section class="grid cols-3">
         <div class="item">
             <h3 class="mt-0">Ce que j’aime faire</h3>
@@ -27,9 +51,11 @@
 
         <div class="item">
             <h3 class="mt-0">Ce que je recherche</h3>
-            <p class="mb-0">Un environnement où je peux contribuer en Java/Spring,
+            <p class="mb-0">
+                Un environnement où je peux contribuer en Java/Spring,
                 apprendre auprès d’une équipe expérimentée et livrer des fonctionnalités
-                fiables et utiles aux utilisateurs.</p>
+                fiables et utiles aux utilisateurs.
+            </p>
         </div>
     </section>
 </main>
