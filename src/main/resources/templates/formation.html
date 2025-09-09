@@ -3,19 +3,28 @@
 <head th:replace="~{fragments :: head('Formation')}"></head>
 <body>
 <div th:replace="~{fragments :: header}"></div>
-<main>
-    <section>
+
+<main class="container">
+    <section class="card">
         <h2>Formation</h2>
         <ul>
             <li th:each="ed : ${education}">
                 <strong th:text="${ed['label']}">Diplôme</strong>
-                <span th:if="${!#strings.isEmpty(ed['details'])}">
-              &nbsp;—&nbsp;<span th:text="${ed['details']}">Détails</span>
+                <span class="meta" th:if="${!#strings.isEmpty(ed['details'])}">
+              — <span th:text="${ed['details']}">Détails</span>
             </span>
             </li>
         </ul>
     </section>
+
+    <section class="item">
+        <h3 class="mt-0">Auto-formation & veille</h3>
+        <ul class="mb-0">
+            <li th:each="s : ${selfLearning}" th:text="${s}">Point</li>
+        </ul>
+    </section>
 </main>
+
 <div th:replace="~{fragments :: footer}"></div>
 </body>
 </html>

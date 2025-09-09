@@ -3,12 +3,37 @@
 <head th:replace="~{fragments :: head('À propos')}"></head>
 <body>
 <div th:replace="~{fragments :: header}"></div>
-<main>
-    <section>
+
+<main class="container">
+    <section class="card">
         <h2>À propos</h2>
-        <p th:text="${about}"></p>
+        <p th:text="${aboutIntro}"></p>
+    </section>
+
+    <section class="grid cols-3">
+        <div class="item">
+            <h3 class="mt-0">Ce que j’aime faire</h3>
+            <ul><li th:each="w : ${whatIDo}" th:text="${w}">Point</li></ul>
+        </div>
+
+        <div class="item">
+            <h3 class="mt-0">Valeurs</h3>
+            <ul>
+                <li>Qualité & lisibilité du code (tests, revues, refactoring).</li>
+                <li>Esprit d’équipe et partage de connaissances.</li>
+                <li>Pragmatisme : livrer utile et itérer rapidement.</li>
+            </ul>
+        </div>
+
+        <div class="item">
+            <h3 class="mt-0">Ce que je recherche</h3>
+            <p class="mb-0">Un environnement où je peux contribuer en Java/Spring,
+                apprendre auprès d’une équipe expérimentée et livrer des fonctionnalités
+                fiables et utiles aux utilisateurs.</p>
+        </div>
     </section>
 </main>
+
 <div th:replace="~{fragments :: footer}"></div>
 </body>
 </html>

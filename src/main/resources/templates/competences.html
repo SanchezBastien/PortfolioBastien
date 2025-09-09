@@ -3,21 +3,52 @@
 <head th:replace="~{fragments :: head('Compétences')}"></head>
 <body>
 <div th:replace="~{fragments :: header}"></div>
-<main>
-    <section>
+
+<main class="container">
+    <section class="card">
         <h2>Compétences techniques</h2>
-        <ul><li th:each="s : ${skills}" th:text="${s}">Compétence</li></ul>
+        <div class="grid cols-2">
+            <ul class="mb-0"><li th:each="s : ${skills}" th:text="${s}">Compétence</li></ul>
+            <div>
+                <h3>Outils</h3>
+                <div class="badges">
+                    <span class="badge" th:each="t : ${tools}" th:text="${t}">Outil</span>
+                </div>
 
-        <h3>Soft skills</h3>
-        <ul><li th:each="e : ${expertise}" th:text="${e}">Atout</li></ul>
+                <h3>Langues</h3>
+                <ul class="mb-0"><li th:each="l : ${languages}" th:text="${l}">Langue</li></ul>
+            </div>
+        </div>
+    </section>
 
-        <h3>Langues</h3>
-        <ul><li th:each="l : ${languages}" th:text="${l}">Langue</li></ul>
-
-        <h3>Centres d’intérêts</h3>
-        <ul><li th:each="i : ${interests}" th:text="${i}">Intérêt</li></ul>
+    <section class="grid cols-3">
+        <div class="item">
+            <h3 class="mt-0">Qualité</h3>
+            <ul>
+                <li>Tests JUnit, validations, contrôleurs testables.</li>
+                <li>Convention de code, revues, documentation Javadoc.</li>
+                <li>Respect des principes SOLID & SRP.</li>
+            </ul>
+        </div>
+        <div class="item">
+            <h3 class="mt-0">Backend Web</h3>
+            <ul>
+                <li>Spring MVC, contrôleurs REST, formulaires & validation.</li>
+                <li>Templates Thymeleaf et ressources statiques.</li>
+                <li>Gestion d’erreurs & pages personnalisées.</li>
+            </ul>
+        </div>
+        <div class="item">
+            <h3 class="mt-0">Déploiement</h3>
+            <ul>
+                <li>Build Maven, Maven Wrapper.</li>
+                <li>Docker (runtime JRE, image multi-étapes).</li>
+                <li>Render : déploiement continu sur `git push`.</li>
+            </ul>
+        </div>
     </section>
 </main>
+
 <div th:replace="~{fragments :: footer}"></div>
 </body>
 </html>
