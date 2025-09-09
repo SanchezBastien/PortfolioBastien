@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title th:text="${name} + ' — ' + title">Portfolio — Bastien SANCHEZ</title>
+    <meta name="description" th:content="${name} + ' — ' + title + ' : Java, Spring Boot, MVC, tests'">
+    <link rel="stylesheet" href="/css/style.css" />
+
+</head>
+<body>
+<header class="hero">
+    <h1 th:text="${name}">Bastien SANCHEZ</h1>
+    <p class="role" th:text="${title}">Développeur informatique</p>
+    <p class="tagline" th:text="${tagline}">Java • Spring Boot • MVC • Tests</p>
+    <nav class="nav">
+        <a href="#apropos">À propos</a>
+        <a href="#competences">Compétences</a>
+        <a href="#experiences">Expériences</a>
+        <a href="#formation">Formation</a>
+        <a href="#contact">Contact</a>
+    </nav>
+</header>
+
+<main>
+    <section id="apropos">
+        <h2>À propos</h2>
+        <p th:text="${about}">Texte…</p>
+    </section>
+
+    <section id="competences">
+        <h2>Compétences</h2>
+        <ul>
+            <li th:each="s : ${skills}" th:text="${s}">Compétence</li>
+        </ul>
+
+        <h3>Soft skills</h3>
+        <ul>
+            <li th:each="e : ${expertise}" th:text="${e}">Atout</li>
+        </ul>
+
+        <h3>Langues</h3>
+        <ul>
+            <li th:each="l : ${languages}" th:text="${l}">Langue</li>
+        </ul>
+
+        <h3>Centres d’intérêts</h3>
+        <ul>
+            <li th:each="i : ${interests}" th:text="${i}">Intérêt</li>
+        </ul>
+    </section>
+
+    <section id="experiences">
+        <h2>Expériences</h2>
+        <article class="item" th:each="xp : ${experiences}">
+            <h3>
+                <span th:text="${xp.get('role')}">Rôle</span> —
+                <span th:text="${xp.get('company')}">Entreprise</span>
+            </h3>
+            <p th:text="${xp.get('dates')}">Dates</p>
+            <ul>
+                <li th:each="b : ${xp.get('bullets')}" th:text="${b}">Point</li>
+            </ul>
+        </article>
+    </section>
+
+    <section id="formation">
+        <h2>Formation</h2>
+        <ul>
+            <li th:each="ed : ${education}">
+                <strong th:text="${ed['label']}">Diplôme</strong>
+                <span th:if="${!#strings.isEmpty(ed['details'])}">
+        &nbsp;—&nbsp;<span th:text="${ed['details']}">Détails</span>
+      </span>
+            </li>
+        </ul>
+    </section>
+
+    <section id="contact">
+        <h2>Contact</h2>
+        <ul>
+            <li><a th:href="'mailto:' + ${contact.get('email')}" th:text="${contact.get('email')}">email</a></li>
+            <li><a th:href="'tel:' + ${contact.get('phone')}" th:text="${contact.get('phone')}">téléphone</a></li>
+            <li th:text="${contact.get('address')}">Adresse</li>
+        </ul>
+
+        <!-- Formulaire si tu veux garder un canal direct -->
+        <form method="post" action="/contact">
+            <label>Nom <input name="name" required></label>
+            <label>Email <input name="email" type="email" required></label>
+            <label>Message <textarea name="message" required></textarea></label>
+            <button type="submit">Envoyer</button>
+        </form>
+        <p th:if="${param.sent}" class="ok">Merci ! Votre message a été envoyé.</p>
+    </section>
+</main>
+
+<footer>
+    <p>© <span th:text="${#calendars.format(#dates.createNow(),'yyyy')}"></span> <span th:text="${name}"></span></p>
+</footer>
+</body>
+</html>
