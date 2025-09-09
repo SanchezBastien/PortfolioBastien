@@ -33,5 +33,27 @@
             <span th:text="${name}"></span> — Portfolio</p>
     </div>
 </footer>
+<button id="backToTop" aria-label="Retour en haut">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 19V5M5 12l7-7 7 7" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+</button>
+<script>
+    const backToTop = document.getElementById('backToTop');
+
+    // Affiche ou cache le bouton en fonction du scroll
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 20) {
+        backToTop.classList.add('show');
+      } else {
+        backToTop.classList.remove('show');
+      }
+    });
+
+    // Retour en haut avec défilement fluide
+    backToTop.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+</script>
 </body>
 </html>
