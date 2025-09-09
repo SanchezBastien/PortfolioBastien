@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments :: head('Compétences')}"></head>
+<body>
+<div th:replace="~{fragments :: header}"></div>
+<main>
+    <section>
+        <h2>Compétences techniques</h2>
+        <ul><li th:each="s : ${skills}" th:text="${s}">Compétence</li></ul>
+
+        <h3>Soft skills</h3>
+        <ul><li th:each="e : ${expertise}" th:text="${e}">Atout</li></ul>
+
+        <h3>Langues</h3>
+        <ul><li th:each="l : ${languages}" th:text="${l}">Langue</li></ul>
+
+        <h3>Centres d’intérêts</h3>
+        <ul><li th:each="i : ${interests}" th:text="${i}">Intérêt</li></ul>
+    </section>
+</main>
+<div th:replace="~{fragments :: footer}"></div>
+</body>
+</html>

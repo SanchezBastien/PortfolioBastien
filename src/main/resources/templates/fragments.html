@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns:th="http://www.thymeleaf.org">
+<head th:fragment="head(pageTitle)">
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <title th:text="${pageTitle} + ' — ' + name">Portfolio</title>
+    <meta name="description" th:content="${tagline}">
+    <link rel="stylesheet" href="/css/style.css"/>
+    <link rel="icon" href="/favicon.ico"/>
+    <meta property="og:title" th:content="${name} + ' — ' + title">
+    <meta property="og:description" th:content="${tagline}">
+</head>
+
+<body>
+<!-- En-tête + nav -->
+<header th:fragment="header" class="hero">
+    <h1 th:text="${name}">Votre Nom</h1>
+    <p class="role" th:text="${title}">Développeur</p>
+    <p class="tagline" th:text="${tagline}">Tagline</p>
+    <nav class="nav">
+        <a href="/a-propos">À propos</a>
+        <a href="/competences">Compétences</a>
+        <a href="/experiences">Expériences</a>
+        <a href="/formation">Formation</a>
+        <a href="/contact">Contact</a>
+    </nav>
+</header>
+
+<!-- Pied de page -->
+<footer th:fragment="footer">
+    <p>© <span th:text="${#calendars.format(#dates.createNow(),'yyyy')}"></span>
+        <span th:text="${name}"></span></p>
+</footer>
+</body>
+</html>

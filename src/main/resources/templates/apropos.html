@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments :: head('À propos')}"></head>
+<body>
+<div th:replace="~{fragments :: header}"></div>
+<main>
+    <section>
+        <h2>À propos</h2>
+        <p th:text="${about}"></p>
+    </section>
+</main>
+<div th:replace="~{fragments :: footer}"></div>
+</body>
+</html>

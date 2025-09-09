@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments :: head('Expériences')}"></head>
+<body>
+<div th:replace="~{fragments :: header}"></div>
+<main>
+    <section>
+        <h2>Expériences</h2>
+        <article class="item" th:each="xp : ${experiences}">
+            <h3>
+                <span th:text="${xp['role']}">Rôle</span> —
+                <span th:text="${xp['company']}">Entreprise</span>
+            </h3>
+            <p th:text="${xp['dates']}">Dates</p>
+            <ul><li th:each="b : ${xp['bullets']}" th:text="${b}">Point</li></ul>
+        </article>
+    </section>
+</main>
+<div th:replace="~{fragments :: footer}"></div>
+</body>
+</html>

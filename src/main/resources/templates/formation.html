@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments :: head('Formation')}"></head>
+<body>
+<div th:replace="~{fragments :: header}"></div>
+<main>
+    <section>
+        <h2>Formation</h2>
+        <ul>
+            <li th:each="ed : ${education}">
+                <strong th:text="${ed['label']}">Diplôme</strong>
+                <span th:if="${!#strings.isEmpty(ed['details'])}">
+              &nbsp;—&nbsp;<span th:text="${ed['details']}">Détails</span>
+            </span>
+            </li>
+        </ul>
+    </section>
+</main>
+<div th:replace="~{fragments :: footer}"></div>
+</body>
+</html>
