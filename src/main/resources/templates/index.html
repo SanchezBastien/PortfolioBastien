@@ -1,26 +1,9 @@
 <!DOCTYPE html>
 <html lang="fr" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title th:text="${name} + ' — ' + title">Portfolio — Bastien SANCHEZ</title>
-    <meta name="description" th:content="${name} + ' — ' + title + ' : Java, Spring Boot, MVC, tests'">
-    <link rel="stylesheet" href="/css/style.css" />
-
-</head>
+<head th:replace="~{fragments :: head('Accueil')}"></head>
 <body>
-<header class="hero">
-    <h1 th:text="${name}">Bastien SANCHEZ</h1>
-    <p class="role" th:text="${title}">Développeur informatique</p>
-    <p class="tagline" th:text="${tagline}">Java • Spring Boot • MVC • Tests</p>
-    <nav class="nav">
-        <a href="#apropos">À propos</a>
-        <a href="#competences">Compétences</a>
-        <a href="#experiences">Expériences</a>
-        <a href="#formation">Formation</a>
-        <a href="#contact">Contact</a>
-    </nav>
-</header>
+
+<div th:replace="~{fragments :: header}"></div>
 
 <main>
     <section id="apropos">
@@ -70,8 +53,8 @@
             <li th:each="ed : ${education}">
                 <strong th:text="${ed['label']}">Diplôme</strong>
                 <span th:if="${!#strings.isEmpty(ed['details'])}">
-        &nbsp;—&nbsp;<span th:text="${ed['details']}">Détails</span>
-      </span>
+                    &nbsp;—&nbsp;<span th:text="${ed['details']}">Détails</span>
+                </span>
             </li>
         </ul>
     </section>
@@ -84,7 +67,6 @@
             <li th:text="${contact.get('address')}">Adresse</li>
         </ul>
 
-        <!-- Formulaire si tu veux garder un canal direct -->
         <form method="post" action="/contact">
             <label>Nom <input name="name" required></label>
             <label>Email <input name="email" type="email" required></label>
@@ -95,8 +77,9 @@
     </section>
 </main>
 
-<footer>
-    <p>© <span th:text="${#calendars.format(#dates.createNow(),'yyyy')}"></span> <span th:text="${name}"></span></p>
-</footer>
+<div th:replace="~{fragments :: footer}"></div>
+
+<!-- >>> inclure les scripts en bas de page <<< -->
+<div th:replace="~{fragments :: scripts}"></div>
 </body>
 </html>

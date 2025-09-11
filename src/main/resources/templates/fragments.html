@@ -17,6 +17,7 @@
         <h1 th:text="${name}">Votre Nom</h1>
         <p class="role" th:text="${title}">Développeur</p>
         <p class="tagline" th:text="${tagline}">Tagline</p>
+
         <nav class="nav">
             <a th:classappend="${active}=='apropos' ? ' active'" href="/a-propos">À propos</a>
             <a th:classappend="${active}=='parcours' ? ' active'" href="/parcours">Mon parcours</a>
@@ -24,6 +25,9 @@
             <a th:classappend="${active}=='projet' ? ' active'" href="/projet">Projet</a>
             <a th:classappend="${active}=='contact' ? ' active'" href="/contact">Contact</a>
         </nav>
+
+        <!-- Bouton Mode Jour/Nuit -->
+        <button id="theme-toggle" class="theme-btn">🌙 Mode sombre</button>
     </div>
 </header>
 
@@ -32,30 +36,67 @@
         <p class="mb-0">© <span th:text="${#calendars.format(#dates.createNow(),'yyyy')}"></span>
             <span th:text="${name}"></span> — Portfolio</p>
     </div>
+
+    <!-- ⚠️ Désormais DANS le fragment footer pour être présent sur toutes les pages -->
+    <button id="backToTop" aria-label="Retour en haut" title="Retour en haut">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 19V5M5 12l7-7 7 7" stroke="white" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+    </button>
 </footer>
 
-<!-- Bouton Retour en Haut -->
-<button id="backToTop" aria-label="Retour en haut" title="Retour en haut">
-    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M12 19V5M5 12l7-7 7 7" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-    </svg>
-</button>
+<!-- Fragment SCRIPTS à inclure en bas de chaque page -->
+<th:block th:fragment="scripts">
+    <script>
+        // Exécuté en fin de document (les éléments sont présents).
+        (function () {
+          const body = document.body;
+          const toggleBtn = document.getElementById('theme-toggle');
+          const backToTop = document.getElementById('backToTop');
 
-<!-- Script pour gérer le bouton -->
-<script>
-    const backToTop = document.getElementById('backToTop');
+          // --- Back to top (protégé) ---
+          if (backToTop) {
+            window.addEventListener('scroll', () => {
+              if (window.scrollY > 300) backToTop.classList.add('show');
+              else backToTop.classList.remove('show');
+            });
+            backToTop.addEventListener('click', () => {
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+          }
 
-    window.addEventListener('scroll', () => {
-      if (window.scrollY > 300) {  // seuil relevé
-        backToTop.classList.add('show');
-      } else {
-        backToTop.classList.remove('show');
-      }
-    });
+          // --- Thème (protégé) ---
+          // Appliquer la préférence stockée
+          if (localStorage.getItem('theme') === 'dark') {
+            body.classList.add('dark-mode');
+            if (toggleBtn) toggleBtn.textContent = '☀️ Mode clair';
+          }
 
-    backToTop.addEventListener('click', () => {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
-</script>
+          // Fallback : si rien en storage, on peut respecter le système
+          if (!localStorage.getItem('theme')) {
+            try {
+              if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                body.classList.add('dark-mode');
+                if (toggleBtn) toggleBtn.textContent = '☀️ Mode clair';
+              }
+            } catch (e) { /* no-op */ }
+          }
+
+          if (toggleBtn) {
+            toggleBtn.addEventListener('click', () => {
+              body.classList.toggle('dark-mode');
+              if (body.classList.contains('dark-mode')) {
+                localStorage.setItem('theme', 'dark');
+                toggleBtn.textContent = '☀️ Mode clair';
+              } else {
+                localStorage.setItem('theme', 'light');
+                toggleBtn.textContent = '🌙 Mode sombre';
+              }
+            });
+          }
+        })();
+    </script>
+</th:block>
 </body>
 </html>

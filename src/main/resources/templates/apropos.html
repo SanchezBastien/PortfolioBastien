@@ -5,21 +5,15 @@
 <div th:replace="~{fragments :: header}"></div>
 
 <main class="container">
-
     <!-- Bandeau principal : photo + présentation -->
     <section class="item">
         <div class="grid cols-2 apropos-section">
-            <!-- Photo -->
             <div class="photo-container">
-                <!-- Remplace /img/photo.jpg par le nom réel si différent -->
                 <img th:src="@{/img/moi_cv_photo.jpg}" alt="moi_cv_photo" class="profile-photo">
             </div>
-
-            <!-- Texte -->
             <div>
                 <h2 class="mt-0">À propos</h2>
                 <p th:text="${aboutIntro}">
-                    <!-- Texte par défaut (sera remplacé par Thymeleaf si fourni) -->
                     Après une reconversion réussie, j’apporte à chaque projet une approche orientée qualité, sécurité et tests, avec un souci constant de lisibilité du code et de performance.
                     Mon objectif : comprendre les besoins, concevoir des solutions fiables et les livrer avec soin.
                 </p>
@@ -86,5 +80,8 @@
 </main>
 
 <div th:replace="~{fragments :: footer}"></div>
+
+<!-- >>> inclure les scripts en bas de page <<< -->
+<div th:replace="~{fragments :: scripts}"></div>
 </body>
 </html>

@@ -2,13 +2,16 @@
 <html lang="fr" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="~{fragments :: head('Compétences')}"></head>
 <body>
+
 <div th:replace="~{fragments :: header}"></div>
 
 <main class="container">
     <section class="card">
         <h2>Compétences techniques</h2>
         <div class="grid cols-2">
-            <ul class="mb-0"><li th:each="s : ${skills}" th:text="${s}">Compétence</li></ul>
+            <ul class="mb-0">
+                <li th:each="s : ${skills}" th:text="${s}">Compétence</li>
+            </ul>
             <div>
                 <h3>Outils</h3>
                 <div class="badges">
@@ -16,7 +19,9 @@
                 </div>
 
                 <h3>Langues</h3>
-                <ul class="mb-0"><li th:each="l : ${languages}" th:text="${l}">Langue</li></ul>
+                <ul class="mb-0">
+                    <li th:each="l : ${languages}" th:text="${l}">Langue</li>
+                </ul>
             </div>
         </div>
     </section>
@@ -50,5 +55,7 @@
 </main>
 
 <div th:replace="~{fragments :: footer}"></div>
+<div th:replace="~{fragments :: scripts}"></div>
+
 </body>
 </html>

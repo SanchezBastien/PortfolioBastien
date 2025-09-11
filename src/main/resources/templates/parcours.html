@@ -1,22 +1,15 @@
 <!DOCTYPE html>
 <html lang="fr" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mon parcours - Portfolio Bastien Sanchez</title>
-    <link rel="stylesheet" th:href="@{/css/style.css}">
-</head>
+<head th:replace="~{fragments :: head('Mon parcours')}"></head>
 <body>
 
-<!-- Header et navigation -->
-<div th:replace="fragments :: header"></div>
+<div th:replace="~{fragments :: header}"></div>
 
 <main>
     <section class="timeline-section">
         <h2 class="section-title">Mon parcours</h2>
         <div class="timeline">
 
-            <!-- Étudiant - Développeur -->
             <div class="timeline-item left">
                 <div class="timeline-content">
                     <span class="date">Janv. 2025 - Aujourd'hui</span>
@@ -27,7 +20,6 @@
                 </div>
             </div>
 
-            <!-- Préventeur HSE -->
             <div class="timeline-item right">
                 <div class="timeline-content">
                     <span class="date">Mai 2024 - Janv. 2025</span>
@@ -38,7 +30,6 @@
                 </div>
             </div>
 
-            <!-- Chargé QHSE -->
             <div class="timeline-item left">
                 <div class="timeline-content">
                     <span class="date">Juil. 2023 - Mai 2024</span>
@@ -49,7 +40,6 @@
                 </div>
             </div>
 
-            <!-- Chargé HSE - Inovie Biomed -->
             <div class="timeline-item right">
                 <div class="timeline-content">
                     <span class="date">Oct. 2021 - Avr. 2023</span>
@@ -60,7 +50,6 @@
                 </div>
             </div>
 
-            <!-- Chargé HSE - Biomed34 -->
             <div class="timeline-item left">
                 <div class="timeline-content">
                     <span class="date">Oct. 2020 - Oct. 2021</span>
@@ -71,7 +60,6 @@
                 </div>
             </div>
 
-            <!-- BTS Métiers de la Chimie / QHSE -->
             <div class="timeline-item right">
                 <div class="timeline-content">
                     <span class="date">Sept. 2018 - Août 2020</span>
@@ -86,8 +74,8 @@
     </section>
 </main>
 
-<!-- Footer -->
-<div th:replace="fragments :: footer"></div>
+<div th:replace="~{fragments :: footer}"></div>
+<div th:replace="~{fragments :: scripts}"></div>
 
 </body>
 </html>
