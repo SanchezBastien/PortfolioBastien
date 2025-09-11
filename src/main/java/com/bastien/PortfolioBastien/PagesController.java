@@ -137,10 +137,12 @@ public class PagesController {
         model.addAttribute("contactIntro", "Envie d’échanger ? Je réponds rapidement par email ou LinkedIn.");
         return "contact";
     }
+
     @GetMapping("/parcours")
     public String parcours(Model model) {
+        model.addAttribute("name", "Bastien SANCHEZ");
+        model.addAttribute("title", "Développeur Java");
         model.addAttribute("active", "parcours");
-        model.addAttribute("pageTitle", "Mon parcours");
         return "parcours";
     }
 }
