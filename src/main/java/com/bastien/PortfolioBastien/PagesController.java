@@ -13,7 +13,6 @@ public class PagesController {
     private void common(Model model) {
         model.addAttribute("name", "Bastien SANCHEZ");
         model.addAttribute("title", "Développeur Java");
-        model.addAttribute("tagline", "Java 21 • Spring Boot • MVC • Tests • Git/GitHub");
         model.addAttribute("contact", Map.of(
                 "email", "sanchez.bastien34@gmail.com",
                 "phone", "07 87 39 83 95",
@@ -80,14 +79,9 @@ public class PagesController {
         common(model);
         model.addAttribute("active", "apropos");
         model.addAttribute("aboutIntro", """
-Je me reconvertis vers le développement Java avec une approche orientée qualité, lisibilité et tests.
-Mon ADN : comprendre un besoin, proposer une solution simple et fiable, livrer avec soin.
+        Après une reconversion réussie, j’apporte à chaque projet une approche orientée qualité, sécurité et tests, avec un souci constant de lisibilité du code et de performance.
+        Mon objectif : comprendre les besoins, concevoir des solutions fiables et les livrer avec soin.
 """);
-        model.addAttribute("whatIDo", List.of(
-                "Développement d’applications web en Java / Spring Boot (MVC, formulaires, validation).",
-                "Mise en place d’un pipeline simple : Git → Build Maven → Déploiement Render (Docker).",
-                "Documentation, tests unitaires et d’intégration pour sécuriser les évolutions."
-        ));
         return "apropos";
     }
 
@@ -127,11 +121,26 @@ Mon ADN : comprendre un besoin, proposer une solution simple et fiable, livrer a
         return "formation";
     }
 
+    @GetMapping("/projet")
+    public String projet(Model model) {
+        common(model); // Ajoute les variables communes (nom, titre, tagline, etc.)
+        model.addAttribute("active", "projet"); // Pour gérer le menu actif
+        model.addAttribute("projectTitle", "Application Bancaire Web - Pay My Buddy");
+        model.addAttribute("projectDescription", "Projet réalisé dans le cadre de la formation OpenClassrooms : Développeur d'application Java.");
+        return "projet";
+    }
+
     @GetMapping("/contact")
     public String contact(Model model) {
         common(model);
         model.addAttribute("active", "contact");
         model.addAttribute("contactIntro", "Envie d’échanger ? Je réponds rapidement par email ou LinkedIn.");
         return "contact";
+    }
+    @GetMapping("/parcours")
+    public String parcours(Model model) {
+        model.addAttribute("active", "parcours");
+        model.addAttribute("pageTitle", "Mon parcours");
+        return "parcours";
     }
 }

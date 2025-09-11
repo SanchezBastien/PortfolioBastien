@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projet - Application Bancaire</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<header th:replace="fragments :: header"></header>
+
+<main class="container">
+    <section class="intro">
+        <h1>Application Bancaire Web - Pay My Buddy</h1>
+        <p class="subtitle">Projet de fin de formation OpenClassrooms - Développeur d'application Java</p>
+        <p>
+            Ce projet a été réalisé dans le cadre de ma formation OpenClassrooms.
+            L'objectif était de concevoir et développer une application bancaire web complète permettant aux utilisateurs de transférer de l'argent
+            et de gérer leurs relations financières en toute sécurité.
+            Ce projet m'a permis d'acquérir des compétences solides en <strong>Java</strong>, <strong>Spring Boot</strong>, <strong>MySQL</strong>, et en architecture <strong>MVC</strong>.
+        </p>
+    </section>
+
+    <section class="context">
+        <h2>Contexte</h2>
+        <p>
+            Dans un contexte fictif, j’ai travaillé en tant que <strong>développeur junior</strong> pour la start-up <em>Pay My Buddy</em>,
+            spécialisée dans les solutions bancaires et financières.
+        </p>
+        <p>L'application devait permettre :</p>
+        <ul>
+            <li>La création d'un compte sécurisé.</li>
+            <li>L'ajout d'amis et la gestion des relations financières.</li>
+            <li>La réalisation de transferts d'argent simples et fiables.</li>
+        </ul>
+    </section>
+
+    <section class="features">
+        <h2>Fonctionnalités principales</h2>
+        <ul>
+            <li>Création d'un utilisateur avec mot de passe sécurisé (hachage BCrypt).</li>
+            <li>Connexion et déconnexion sécurisées.</li>
+            <li>Ajout et gestion des relations entre utilisateurs.</li>
+            <li>Réalisation de transferts d'argent.</li>
+            <li>Suivi des transactions dans une base MySQL.</li>
+            <li>Interface utilisateur intuitive via Thymeleaf.</li>
+        </ul>
+
+        <h3>Pages clés</h3>
+        <ul>
+            <li><code>/signup</code> → Inscription</li>
+            <li><code>/login</code> → Connexion</li>
+            <li><code>/transfer</code> → Transfert d'argent</li>
+            <li><code>/profile</code> → Profil utilisateur</li>
+            <li><code>/addfriend</code> → Gestion des relations</li>
+        </ul>
+    </section>
+
+    <section class="architecture">
+        <h2>Architecture technique</h2>
+        <p>Le projet suit une architecture <strong>MVC (Model-View-Controller)</strong> :</p>
+        <ul>
+            <li><strong>Controllers :</strong> gèrent les requêtes utilisateur.</li>
+            <li><strong>Services :</strong> logique métier et gestion des transactions.</li>
+            <li><strong>Repositories :</strong> accès à la base de données.</li>
+            <li><strong>Entities :</strong> modélisation des tables MySQL.</li>
+            <li><strong>Templates :</strong> pages HTML générées avec Thymeleaf.</li>
+        </ul>
+
+        <h3>Technologies utilisées</h3>
+        <ul class="tech-list">
+            <li>Java & Spring Boot</li>
+            <li>MySQL</li>
+            <li>BCrypt pour la sécurité</li>
+            <li>Jacoco & Surefire Reports pour les tests</li>
+            <li>Git & GitHub</li>
+            <li>IntelliJ IDEA</li>
+        </ul>
+    </section>
+
+    <section class="database">
+        <h2>Base de données</h2>
+        <p>La base de données <code>projetpaymybuddy</code> contient 3 tables principales :</p>
+        <table class="db-schema">
+            <thead>
+            <tr>
+                <th>Table</th>
+                <th>Rôle</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>User</td>
+                <td>Informations des utilisateurs (email, mot de passe, solde, etc.)</td>
+            </tr>
+            <tr>
+                <td>Transaction</td>
+                <td>Historique des transferts d'argent</td>
+            </tr>
+            <tr>
+                <td>Connection</td>
+                <td>Relations d'amitié entre utilisateurs</td>
+            </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <section class="skills">
+        <h2>Compétences acquises</h2>
+        <ul>
+            <li>Développement full stack avec Java/Spring Boot.</li>
+            <li>Mise en place d'une application sécurisée et scalable.</li>
+            <li>Conception et gestion d'une base de données relationnelle.</li>
+            <li>Application du modèle MVC et bonnes pratiques de développement.</li>
+            <li>Réalisation de tests unitaires et d'intégration.</li>
+            <li>Utilisation de Git et GitHub pour le versioning.</li>
+        </ul>
+    </section>
+
+    <section class="cta">
+        <h2>Code source du projet</h2>
+        <p>Retrouvez le code source complet sur mon GitHub :</p>
+        <a href="#" class="btn" target="_blank">Voir sur GitHub</a>
+    </section>
+</main>
+
+<footer th:replace="fragments :: footer"></footer>
+</body>
+</html>

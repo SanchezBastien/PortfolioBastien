@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mon parcours - Portfolio Bastien Sanchez</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+
+<!-- Header et navigation -->
+<div th:replace="fragments :: header"></div>
+
+<main>
+    <section class="timeline-section">
+        <h2 class="section-title">Mon parcours</h2>
+        <div class="timeline">
+
+            <!-- Étudiant - Développeur -->
+            <div class="timeline-item left">
+                <div class="timeline-content">
+                    <span class="date">Janv. 2025 - Aujourd'hui</span>
+                    <h3>Étudiant - Développeur d'application Java</h3>
+                    <p>OpenClassrooms - Formation intensive en développement de logiciels.<br>
+                        Apprentissage des bonnes pratiques et réalisation de projets professionnels.</p>
+                    <span class="tag formation">Formation</span>
+                </div>
+            </div>
+
+            <!-- Préventeur HSE -->
+            <div class="timeline-item right">
+                <div class="timeline-content">
+                    <span class="date">Mai 2024 - Janv. 2025</span>
+                    <h3>Préventeur HSE</h3>
+                    <p>SECURILOG - CDI<br>
+                        Suivi et mise en place des procédures de sécurité sur site industriel Seveso.</p>
+                    <span class="tag experience">Expérience</span>
+                </div>
+            </div>
+
+            <!-- Chargé QHSE -->
+            <div class="timeline-item left">
+                <div class="timeline-content">
+                    <span class="date">Juil. 2023 - Mai 2024</span>
+                    <h3>Chargé QHSE</h3>
+                    <p>Smurfit Kappa - CDD<br>
+                        Gestion qualité, hygiène, sécurité et environnement dans la production d'emballages en papier.</p>
+                    <span class="tag experience">Expérience</span>
+                </div>
+            </div>
+
+            <!-- Chargé HSE - Inovie Biomed -->
+            <div class="timeline-item right">
+                <div class="timeline-content">
+                    <span class="date">Oct. 2021 - Avr. 2023</span>
+                    <h3>Chargé HSE</h3>
+                    <p>Inovie Biomed - CDI<br>
+                        Conformité réglementaire et normative, suivi des audits, sécurité et environnement.</p>
+                    <span class="tag experience">Expérience</span>
+                </div>
+            </div>
+
+            <!-- Chargé HSE - Biomed34 -->
+            <div class="timeline-item left">
+                <div class="timeline-content">
+                    <span class="date">Oct. 2020 - Oct. 2021</span>
+                    <h3>Chargé HSE (alternance)</h3>
+                    <p>Biomed34 - Contrat en alternance<br>
+                        Suivi des risques, formation du personnel et mise en place de procédures sécurité.</p>
+                    <span class="tag formation">Formation</span>
+                </div>
+            </div>
+
+            <!-- BTS Métiers de la Chimie / QHSE -->
+            <div class="timeline-item right">
+                <div class="timeline-content">
+                    <span class="date">Sept. 2018 - Août 2020</span>
+                    <h3>BTS Métiers de la Chimie / QHSE (alternance)</h3>
+                    <p>Ecloserie - Contrat en alternance<br>
+                        Spécialisation en chimie analytique, chimie physique et biologie appliquée.</p>
+                    <span class="tag formation">Formation</span>
+                </div>
+            </div>
+
+        </div>
+    </section>
+</main>
+
+<!-- Footer -->
+<div th:replace="fragments :: footer"></div>
+
+</body>
+</html>

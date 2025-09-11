@@ -20,15 +20,9 @@
                 <h2 class="mt-0">À propos</h2>
                 <p th:text="${aboutIntro}">
                     <!-- Texte par défaut (sera remplacé par Thymeleaf si fourni) -->
-                    Je me reconvertis vers le développement Java avec une approche orientée qualité,
-                    lisibilité et tests. Mon ADN : comprendre un besoin, proposer une solution simple
-                    et fiable, livrer avec soin.
+                    Après une reconversion réussie, j’apporte à chaque projet une approche orientée qualité, sécurité et tests, avec un souci constant de lisibilité du code et de performance.
+                    Mon objectif : comprendre les besoins, concevoir des solutions fiables et les livrer avec soin.
                 </p>
-
-                <h3>Ce que je fais</h3>
-                <ul>
-                    <li th:each="w : ${whatIDo}" th:text="${w}">Développement d’applications web en Java / Spring Boot.</li>
-                </ul>
             </div>
         </div>
     </section>
@@ -36,25 +30,56 @@
     <!-- Trois blocs complémentaires -->
     <section class="grid cols-3">
         <div class="item">
-            <h3 class="mt-0">Ce que j’aime faire</h3>
-            <ul><li th:each="w : ${whatIDo}" th:text="${w}">Point</li></ul>
-        </div>
-
-        <div class="item">
-            <h3 class="mt-0">Valeurs</h3>
+            <h3 class="mt-0">Mon approche qualité</h3>
+            <p>
+                Mon expérience passée dans le domaine de la qualité et de la sécurité me pousse à appliquer au développement
+                logiciel les mêmes principes d'exigence et de rigueur :
+            </p>
             <ul>
-                <li>Qualité & lisibilité du code (tests, revues, refactoring).</li>
-                <li>Esprit d’équipe et partage de connaissances.</li>
-                <li>Pragmatisme : livrer utile et itérer rapidement.</li>
+                <li><strong>Lisibilité</strong> : produire un code clair, documenté et facile à maintenir.</li>
+                <li><strong>Fiabilité</strong> : garantir la stabilité grâce à des tests unitaires et d’intégration solides.</li>
+                <li><strong>Sécurité</strong> : respecter les bonnes pratiques pour protéger les données et les utilisateurs.</li>
+                <li><strong>Amélioration continue</strong> : rester curieux et faire évoluer les méthodes et outils pour livrer
+                    des produits toujours plus robustes.
+                </li>
             </ul>
         </div>
 
         <div class="item">
+            <h3 class="mt-0">Valeurs</h3>
+            <div class="valeurs-grid">
+                <div class="valeur">
+                    <p>
+                        En tant que développeur, je ne me limite pas à écrire du code :
+                        j'accorde une grande importance à la <strong>collaboration</strong>
+                        et à la <strong>communication</strong> au sein d'une équipe.
+                    </p>
+                    <ul>
+                        <li><strong>Esprit d'équipe</strong> : favoriser l'entraide et la cohésion pour atteindre les objectifs collectifs.</li>
+                        <li><strong>Pédagogie et écoute</strong> : comprendre les besoins des utilisateurs et vulgariser les aspects techniques.</li>
+                        <li><strong>Adaptabilité</strong> : m'ajuster aux projets et aux outils pour répondre efficacement aux contraintes.</li>
+                        <li><strong>Leadership en devenir</strong> : apprendre des autres et partager mes connaissances pour faire progresser l'équipe.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="item">
             <h3 class="mt-0">Ce que je recherche</h3>
-            <p class="mb-0">
-                Un environnement où je peux contribuer en Java/Spring,
-                apprendre auprès d’une équipe expérimentée et livrer des fonctionnalités
-                fiables et utiles aux utilisateurs.
+            <p>
+                Je souhaite rejoindre une équipe de développement où je pourrai
+                <strong>contribuer activement à la création d’applications robustes et utiles</strong>,
+                tout en <strong>continuant à progresser techniquement</strong>.
+            </p>
+            <ul>
+                <li>Mettre en pratique mes compétences en Java / Spring Boot.</li>
+                <li>Grandir au contact d'une équipe expérimentée.</li>
+                <li>Participer à des projets ayant un impact réel pour les utilisateurs.</li>
+                <li>Apporter ma rigueur et mon sens de la qualité à l'équipe.</li>
+            </ul>
+            <p class="closing">
+                Mon objectif : devenir un <strong>développeur confirmé</strong>,
+                autonome et force de proposition, au service de la réussite collective.
             </p>
         </div>
     </section>
