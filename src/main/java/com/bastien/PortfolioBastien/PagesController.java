@@ -32,7 +32,7 @@ public class PagesController {
                 "CI/CD : Git, GitHub, déploiement sur Render (Docker)"
         );
     }
-    private List<String> tools() { return List.of("IntelliJ IDEA", "Git & GitHub", "Maven", "Postman", "Docker (basics)", "Trello/Jira (basics)"); }
+    private List<String> tools() { return List.of("IntelliJ IDEA /", " Git & GitHub /", " Maven /", " Postman /", " Docker (basics) /", " Trello/Jira (basics)"); }
     private List<String> softSkills() {
         return List.of(
                 "Rigueur & sens de la qualité (expérience qualité/HSE)",
