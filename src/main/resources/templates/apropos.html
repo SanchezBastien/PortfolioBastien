@@ -6,18 +6,20 @@
 
 <main class="container">
     <!-- Bandeau principal : photo + présentation -->
-    <section class="item">
-        <div class="grid cols-2 apropos-section">
-            <div class="photo-container">
-                <img th:src="@{/img/cmoideux.jpg}" alt="cmoideux" class="profile-photo">
+    <section class="item apropos-section">
+        <div class="photo-container">
+            <div class="photo-frame">
+                <img th:src="@{/img/cmoideux.jpg}" alt="Photo de profil" class="profile-photo">
             </div>
-            <div>
-                <h2 class="mt-0">À propos</h2>
-                <p th:text="${aboutIntro}">
-                    Après une reconversion réussie, j’apporte à chaque projet une approche orientée qualité, sécurité et tests, avec un souci constant de lisibilité du code et de performance.
-                    Mon objectif : comprendre les besoins, concevoir des solutions fiables et les livrer avec soin.
-                </p>
-            </div>
+        </div>
+
+        <div>
+            <h2 class="mt-0">À propos</h2>
+            <p th:text="${aboutIntro}">
+                Après une reconversion réussie, j’apporte à chaque projet une approche orientée qualité,
+                sécurité et tests, avec un souci constant de lisibilité du code et de performance.
+                Mon objectif : comprendre les besoins, concevoir des solutions fiables et les livrer avec soin.
+            </p>
         </div>
     </section>
 
