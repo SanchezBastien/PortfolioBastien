@@ -1,31 +1,34 @@
 package com.bastien.PortfolioBastien;
 
-import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.NotBlank;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import jakarta.validation.Valid;
 import org.springframework.stereotype.Controller;
-import org.springframework.validation.annotation.Validated;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
-@Validated
 public class ContactController {
 
-    private static final Logger log = LoggerFactory.getLogger(ContactController.class);
-
-    public static class ContactMessage {
-        @NotBlank public String name;
-        @NotBlank @Email public String email;
-        @NotBlank public String message;
-    }
 
     @PostMapping("/contact")
-    public String handle(@ModelAttribute @Validated ContactMessage m, RedirectAttributes ra) {
-        log.info("Message contact de {} <{}>: {}", m.name, m.email, m.message);
-        ra.addAttribute("sent", "1");
-        return "redirect:/#contact";
+    public String handleContactForm(
+            @Valid @ModelAttribute ContactMessage contactMessage,
+            BindingResult bindingResult,
+            RedirectAttributes redirectAttributes) {
+
+        if (bindingResult.hasErrors()) {
+            return "contact"; // Renvoie la page avec les messages d'erreur
+        }
+
+        // Affiche les données dans la console
+        System.out.println("Nom : " + contactMessage.getName());
+        System.out.println("Email : " + contactMessage.getEmail());
+        System.out.println("Message : " + contactMessage.getMessage());
+
+        // Redirection avec confirmation
+        redirectAttributes.addAttribute("sent", "true");
+        return "redirect:/contact";
     }
 }
