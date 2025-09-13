@@ -15,7 +15,7 @@ public class ContactMessage {
     @NotBlank(message = "Le message est obligatoire")
     private String message;
 
-    // Getters et setters
+    // Getters et Setters
     public String getName() {
         return name;
     }

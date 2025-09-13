@@ -28,6 +28,8 @@
                     <label>Message <textarea name="message" rows="5" required></textarea></label>
                     <button type="submit">Envoyer</button>
                 </form>
+
+                <!-- Message de confirmation -->
                 <p th:if="${param.sent}" class="ok">Merci ! Votre message a bien été envoyé.</p>
             </div>
         </div>
