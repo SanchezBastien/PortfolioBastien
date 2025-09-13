@@ -6,34 +6,47 @@ html {
    Thèmes avec variables CSS
    =========================== */
 :root {
-  /* Thème clair par défaut */
-  --bg-color: #ffffff;
-  --text-color: #222;
-  --header-bg: #f5f5f5;
-  --header-text: #000000;
-  --link-color: #007acc;
+  /* 🌞 Mode clair */
+  --bg-color: #f2f3f5;         /* Fond global doux */
+  --section-bg: #e6e8eb;       /* Sections et header */
+  --card-bg: #ffffff;          /* Cartes et éléments isolés */
+  --text-color: #2c2c2c;       /* Texte principal */
+  --text-muted: #5a5a5a;       /* Texte secondaire */
+  --link-color: #3a7bd5;       /* Liens */
+  --link-hover: #2f68b8;
 
   /* Couleurs principales */
-  --color-primary: #007acc;
-  --color-secondary: #00b894;
-  --color-accent: #6c5ce7;
+  --color-primary: #3a7bd5;    /* Bleu principal */
+  --color-secondary: #3ad29f;  /* Vert secondaire */
+  --color-accent: #8e6ce7;     /* Violet accent */
   --color-light: #f5f5f7;
   --color-muted: #666;
+
+  /* Styles communs */
   --radius: 14px;
   --max: 920px;
   --pad: 16px;
 }
 
 body.dark-mode {
-  /* Thème sombre */
-  --bg-color: #121212;
-  --text-color: #e4e4e4;
-  --header-bg: #1f1f1f;
-  --header-text: #ffffff;
-  --link-color: #4da6ff;
+  /* 🌚 Mode sombre */
+  --bg-color: #1c1e22;
+  --section-bg: #2a2c31;
+  --card-bg: #2e3136;
+  --text-color: #e0e0e0;
+  --text-muted: #a0a0a0;
+  --link-color: #4d8eff;
+  --link-hover: #3b73d1;
+
+  /* Couleurs principales */
+  --color-primary: #4d8eff;
+  --color-secondary: #3dd6a7;
+  --color-accent: #b097ff;
 }
 
-/* Transition fluide lors du changement de thème */
+/* ===========================
+   Transitions globales
+   =========================== */
 * {
   box-sizing: border-box;
   transition: background 0.3s ease, color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
@@ -48,11 +61,11 @@ body {
 }
 
 /* ===========================
-   HEADER & HERO MODERNE
+   HEADER & HERO
    =========================== */
 .hero {
   padding: 24px var(--pad);
-  background: linear-gradient(135deg, #f8faff 0%, #eef2f8 100%);
+  background: linear-gradient(135deg, var(--section-bg) 0%, var(--bg-color) 100%);
   background-size: 400% 400%;
   animation: gradient-shift 12s ease infinite;
   border-bottom: 1px solid rgba(0, 0, 0, 0.05);
@@ -65,8 +78,8 @@ body {
 }
 
 body.dark-mode .hero {
-  background: linear-gradient(135deg, #1e1e1e 0%, #2b2b2b 100%);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  background: linear-gradient(135deg, #1e1e1e 0%, #2a2c31 100%);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .role {
@@ -84,10 +97,6 @@ body.dark-mode .hero {
   padding: 0 var(--pad);
 }
 
-.header-left {
-  text-align: left;
-}
-
 .header-left h1 {
   font-size: 1.8rem;
   font-weight: 700;
@@ -97,7 +106,7 @@ body.dark-mode .hero {
 
 .header-left .role {
   font-size: 1rem;
-  color: var(--color-muted);
+  color: var(--text-muted);
   margin-top: 4px;
 }
 
@@ -123,7 +132,6 @@ body.dark-mode .hero {
   font-weight: 500;
   text-decoration: none;
   color: var(--text-color);
-  transition: color 0.3s ease;
   padding-bottom: 4px;
   white-space: nowrap;
 }
@@ -172,13 +180,12 @@ body.dark-mode .hero {
   align-items: center;
   gap: 6px;
   padding: 6px 14px;
-  background: var(--bg-color);
+  background: var(--card-bg);
   border: 1px solid var(--color-primary);
   border-radius: 20px;
   cursor: pointer;
   color: var(--color-primary);
   box-shadow: 0 1px 4px rgba(0,0,0,0.05);
-  transition: all 0.3s ease;
 }
 
 .theme-btn-small:hover {
@@ -198,17 +205,18 @@ main {
 
 h2 {
   margin-top: 32px;
+  color: var(--text-color);
 }
 
 /* Sections alternées */
 section:nth-child(even) {
-  background: rgba(0, 0, 0, 0.02);
+  background: rgba(0, 0, 0, 0.03);
   padding: 40px 20px;
   border-radius: var(--radius);
 }
 
 body.dark-mode section:nth-child(even) {
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(255, 255, 255, 0.03);
 }
 
 /* ===========================
@@ -216,7 +224,7 @@ body.dark-mode section:nth-child(even) {
    =========================== */
 .item,
 .card {
-  background: var(--bg-color);
+  background: var(--card-bg);
   padding: 16px;
   border-radius: var(--radius);
   box-shadow: 0 2px 10px rgba(0,0,0,.05);
@@ -276,7 +284,7 @@ body.dark-mode section:nth-child(even) {
 }
 
 .timeline-item .timeline-content {
-  background: var(--bg-color);
+  background: var(--card-bg);
   color: var(--text-color);
   padding: 16px;
   border-radius: var(--radius);
@@ -284,14 +292,6 @@ body.dark-mode section:nth-child(even) {
   position: relative;
   max-width: 400px;
   margin: 0 auto;
-}
-
-.timeline-item.left .timeline-content {
-  margin-right: 20px;
-}
-
-.timeline-item.right .timeline-content {
-  margin-left: 20px;
 }
 
 .timeline-item .date {
@@ -310,13 +310,13 @@ body.dark-mode section:nth-child(even) {
 }
 
 .timeline-item .tag.formation {
-  background-color: #e8f7ff;
-  color: #007acc;
+  background-color: #dceeff;
+  color: var(--color-primary);
 }
 
 .timeline-item .tag.experience {
-  background-color: #eafff0;
-  color: #00b894;
+  background-color: #dcf5eb;
+  color: var(--color-secondary);
 }
 
 /* Responsive timeline */
@@ -372,7 +372,7 @@ body.dark-mode section:nth-child(even) {
 }
 
 /* ===========================
-   PHOTO DE PROFIL COMPLEXE
+   PHOTO DE PROFIL
    =========================== */
 .photo-container {
   display: flex;
@@ -392,7 +392,6 @@ body.dark-mode section:nth-child(even) {
   background-size: 400% 400%;
   animation: gradient-rotate 8s ease infinite;
   box-shadow: 0 0 15px rgba(0, 122, 204, 0.25);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .photo-frame:hover {
@@ -416,7 +415,6 @@ body.dark-mode section:nth-child(even) {
   position: relative;
 }
 
-/* Halo lumineux derrière la photo */
 .photo-container::before {
   content: "";
   position: absolute;
@@ -435,7 +433,7 @@ body.dark-mode section:nth-child(even) {
   opacity: 0.8;
 }
 
-/* Responsive : réduction sur mobile */
+/* Responsive photo */
 @media (max-width: 620px) {
   .photo-frame {
     width: 110px;
