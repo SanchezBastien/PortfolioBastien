@@ -7,18 +7,18 @@ html {
    =========================== */
 :root {
   /* 🌞 Mode clair */
-  --bg-color: #f2f3f5;         /* Fond global doux */
-  --section-bg: #e6e8eb;       /* Sections et header */
-  --card-bg: #ffffff;          /* Cartes et éléments isolés */
-  --text-color: #2c2c2c;       /* Texte principal */
-  --text-muted: #5a5a5a;       /* Texte secondaire */
-  --link-color: #3a7bd5;       /* Liens */
+  --bg-color: #f2f3f5;
+  --section-bg: #e6e8eb;
+  --card-bg: #ffffff;
+  --text-color: #2c2c2c;
+  --text-muted: #5a5a5a;
+  --link-color: #3a7bd5;
   --link-hover: #2f68b8;
 
   /* Couleurs principales */
-  --color-primary: #3a7bd5;    /* Bleu principal */
-  --color-secondary: #3ad29f;  /* Vert secondaire */
-  --color-accent: #8e6ce7;     /* Violet accent */
+  --color-primary: #3a7bd5;
+  --color-secondary: #3ad29f;
+  --color-accent: #8e6ce7;
   --color-light: #f5f5f7;
   --color-muted: #666;
 
@@ -208,7 +208,6 @@ h2 {
   color: var(--text-color);
 }
 
-/* Sections alternées */
 section:nth-child(even) {
   background: rgba(0, 0, 0, 0.03);
   padding: 40px 20px;
@@ -220,7 +219,7 @@ body.dark-mode section:nth-child(even) {
 }
 
 /* ===========================
-   CARTES / BLOCS & ANIMATION
+   CARTES / BLOCS
    =========================== */
 .item,
 .card,
@@ -314,7 +313,6 @@ body.dark-mode section:nth-child(even) {
   color: var(--color-secondary);
 }
 
-/* Responsive timeline */
 @media (max-width: 768px) {
   .timeline::before {
     left: 8px;
@@ -331,6 +329,108 @@ body.dark-mode section:nth-child(even) {
   .timeline-item .timeline-content {
     margin: 0;
   }
+}
+
+/* ===========================
+   FORMULAIRE DE CONTACT
+   =========================== */
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.form-group label {
+  font-weight: bold;
+  margin-bottom: 6px;
+}
+
+.form-group input,
+.form-group textarea {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: var(--radius);
+  font-size: 16px;
+  background: var(--card-bg);
+  color: var(--text-color);
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 6px rgba(58, 123, 213, 0.3);
+  outline: none;
+}
+
+/* Messages d'erreur */
+.error-message {
+  display: none;
+  color: #d9534f;
+  font-size: 0.9em;
+  margin-top: 4px;
+}
+
+.invalid .error-message {
+  display: block;
+}
+
+.invalid input,
+.invalid textarea {
+  border-color: #d9534f;
+}
+
+/* Bouton d'envoi */
+.btn-submit {
+  background: var(--color-primary);
+  color: #fff;
+  border: none;
+  padding: 12px;
+  border-radius: var(--radius);
+  cursor: pointer;
+  font-size: 16px;
+  transition: background 0.3s ease-in-out;
+}
+
+.btn-submit:hover {
+  background: #2f68b8;
+}
+
+/* Message de succès */
+.success-message {
+  color: #28a745;
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+/* Champ honeypot caché */
+.honeypot {
+  display: none;
+}
+
+/* Coordonnées */
+.contact-info {
+  list-style: none;
+  padding: 0;
+}
+
+.contact-info li {
+  margin-bottom: 8px;
+}
+
+.contact-info a {
+  color: var(--color-primary);
+  text-decoration: none;
+}
+
+.contact-info a:hover {
+  text-decoration: underline;
 }
 
 /* ===========================
@@ -428,7 +528,6 @@ body.dark-mode section:nth-child(even) {
   opacity: 0.8;
 }
 
-/* Responsive photo */
 @media (max-width: 620px) {
   .photo-frame {
     width: 110px;
@@ -453,7 +552,6 @@ body.dark-mode section:nth-child(even) {
   margin-bottom: 0 !important;
 }
 
-/* Responsive grid */
 @media (max-width: 860px) {
   .grid.cols-3 {
     grid-template-columns: 1fr 1fr;

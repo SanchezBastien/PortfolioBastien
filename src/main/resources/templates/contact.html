@@ -8,29 +8,67 @@
 <main class="container">
     <section class="card" id="contact">
         <h2>Contact</h2>
-        <p th:text="${contactIntro}">Intro</p>
+        <p th:text="${contactIntro}">N'hésitez pas à me contacter via ce formulaire pour toute question ou demande.</p>
 
         <div class="grid cols-2">
+            <!-- Coordonnées -->
             <div class="item">
                 <h3 class="mt-0">Coordonnées</h3>
-                <ul>
-                    <li><a th:href="'mailto:' + ${contact['email']}" th:text="${contact['email']}">email</a></li>
-                    <li><a th:href="'tel:' + ${contact['phone']}" th:text="${contact['phone']}">téléphone</a></li>
-                    <li><a th:if="${contact['linkedin']}" th:href="${contact['linkedin']}" target="_blank" rel="noopener">LinkedIn</a></li>
+                <ul class="contact-info">
+                    <li>
+                        <a th:href="'mailto:' + ${contact['email']}" th:text="${contact['email']}">email</a>
+                    </li>
+                    <li>
+                        <a th:href="'tel:' + ${contact['phone']}" th:text="${contact['phone']}">téléphone</a>
+                    </li>
+                    <li>
+                        <a th:if="${contact['linkedin']}" th:href="${contact['linkedin']}" target="_blank" rel="noopener">
+                            LinkedIn
+                        </a>
+                    </li>
                 </ul>
             </div>
 
+            <!-- Formulaire de contact -->
             <div class="item">
                 <h3 class="mt-0">Formulaire</h3>
-                <form method="post" action="/contact">
-                    <label>Nom <input name="name" required></label>
-                    <label>Email <input name="email" type="email" required></label>
-                    <label>Message <textarea name="message" rows="5" required></textarea></label>
-                    <button type="submit">Envoyer</button>
-                </form>
+                <form method="post" action="/contact" class="contact-form" novalidate>
 
-                <!-- Message de confirmation -->
-                <p th:if="${param.sent}" class="ok">Merci ! Votre message a bien été envoyé.</p>
+                    <!-- Champ Nom -->
+                    <div class="form-group">
+                        <label for="name">Nom</label>
+                        <input id="name" name="name" type="text" placeholder="Votre nom" required aria-required="true">
+                        <span class="error-message">Veuillez entrer votre nom</span>
+                    </div>
+
+                    <!-- Champ Email -->
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input id="email" name="email" type="email" placeholder="Votre adresse email" required aria-required="true">
+                        <span class="error-message">Veuillez entrer une adresse email valide</span>
+                    </div>
+
+                    <!-- Champ Message -->
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" rows="5" placeholder="Votre message..." required aria-required="true"></textarea>
+                        <span class="error-message">Veuillez écrire un message</span>
+                    </div>
+
+                    <!-- Champ caché anti-bot -->
+                    <div class="honeypot">
+                        <label for="website">Ne pas remplir ce champ</label>
+                        <input id="website" name="website" type="text" tabindex="-1" autocomplete="off">
+                    </div>
+
+                    <!-- Bouton d'envoi -->
+                    <button type="submit" class="btn-submit">Envoyer</button>
+
+                    <!-- Message de confirmation -->
+                    <p th:if="${param.sent}" class="ok success-message">
+                        ✅ Merci ! Votre message a bien été envoyé.
+                    </p>
+                </form>
             </div>
         </div>
     </section>
@@ -38,6 +76,25 @@
 
 <div th:replace="~{fragments :: footer}"></div>
 <div th:replace="~{fragments :: scripts}"></div>
+
+<script>
+    // Validation client simple
+    document.querySelector('.contact-form').addEventListener('submit', function(event) {
+        let valid = true;
+        this.querySelectorAll('[required]').forEach(input => {
+            if (!input.value.trim()) {
+                valid = false;
+                input.parentElement.classList.add('invalid');
+            } else {
+                input.parentElement.classList.remove('invalid');
+            }
+        });
+
+        if (!valid) {
+            event.preventDefault();
+        }
+    });
+</script>
 
 </body>
 </html>
