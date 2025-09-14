@@ -15,14 +15,13 @@ public class PagesController {
         model.addAttribute("title", "Développeur Java");
         model.addAttribute("contact", Map.of(
                 "email", "sanchez.bastien34@gmail.com",
-                "phone", "07 87 39 83 95",
-                "linkedin", "https://www.linkedin.com/in/bastien-sanchez"
+                "phone", "07 87 39 83 95"
         ));
     }
 
     private List<String> hardSkills() {
         return List.of(
-                "Java 21, API Streams, Records, Concurrence",
+                "Java 21, API Streams",
                 "Spring Boot (Web MVC, Validation, DevTools), Thymeleaf",
                 "Tests : JUnit 5, tests d’intégration, TDD de base",
                 "Maven & Maven Wrapper, gestion des dépendances",
@@ -32,7 +31,7 @@ public class PagesController {
                 "CI/CD : Git, GitHub, déploiement sur Render (Docker)"
         );
     }
-    private List<String> tools() { return List.of("IntelliJ IDEA /", " Git & GitHub /", " Maven /", " Postman /", " Docker (basics) /", " Trello/Jira (basics)"); }
+    private List<String> tools() { return List.of("IntelliJ IDEA /", " Git & GitHub /", " Maven /", " Postman /", " Docker (basics) /", " Trello / Jira "); }
     private List<String> softSkills() {
         return List.of(
                 "Rigueur & sens de la qualité (expérience qualité/HSE)",
@@ -134,7 +133,7 @@ public class PagesController {
     public String contact(Model model) {
         common(model);
         model.addAttribute("active", "contact");
-        model.addAttribute("contactIntro", "Envie d’échanger ? Je réponds rapidement par email ou LinkedIn.");
+        model.addAttribute("contactIntro", "Envie d’échanger ? Je réponds rapidement par email et par téléphone.");
         return "contact";
     }
 

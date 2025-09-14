@@ -60,7 +60,6 @@
           const toggleBtn = document.getElementById('theme-toggle');
           const backToTop = document.getElementById('backToTop');
 
-          // Bouton "Retour en haut"
           if (backToTop) {
             window.addEventListener('scroll', () => {
               if (window.scrollY > 300) backToTop.classList.add('show');
@@ -71,13 +70,11 @@
             });
           }
 
-          // Thème depuis le stockage
           if (localStorage.getItem('theme') === 'dark') {
             body.classList.add('dark-mode');
             if (toggleBtn) toggleBtn.textContent = '☀️ Mode clair';
           }
 
-          // Préférence système si rien en storage
           if (!localStorage.getItem('theme')) {
             try {
               if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
@@ -86,7 +83,6 @@
             } catch (e) {}
           }
 
-          // Toggle du thème
           if (toggleBtn) {
             toggleBtn.addEventListener('click', () => {
               body.classList.toggle('dark-mode');

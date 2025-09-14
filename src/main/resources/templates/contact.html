@@ -21,11 +21,6 @@
                     <li>
                         <a th:href="'tel:' + ${contact['phone']}" th:text="${contact['phone']}">téléphone</a>
                     </li>
-                    <li>
-                        <a th:if="${contact['linkedin']}" th:href="${contact['linkedin']}" target="_blank" rel="noopener">
-                            LinkedIn
-                        </a>
-                    </li>
                 </ul>
             </div>
 
