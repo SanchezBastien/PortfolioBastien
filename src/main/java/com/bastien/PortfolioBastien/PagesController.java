@@ -21,7 +21,7 @@ public class PagesController {
 
     private List<String> hardSkills() {
         return List.of(
-                "Java 21, API Streams",
+                "DevOps, Java 21, API Streams, CI/CD, Docker",
                 "Spring Boot (Web MVC, Validation, DevTools), Thymeleaf",
                 "Tests : JUnit 5, tests d’intégration, TDD de base",
                 "Maven & Maven Wrapper, gestion des dépendances",
