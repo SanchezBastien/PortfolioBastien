@@ -23,12 +23,12 @@ public class PagesController {
         return List.of(
                 "DevOps, Java 21, API Streams, CI/CD, Spring Security, MangoDB, MySQL, NoSQL",
                 "Spring Boot (Web MVC, Validation, DevTools), Thymeleaf",
-                "Tests : JUnit 5, tests d’intégration, TDD de base",
-                "Maven & Maven Wrapper, gestion des dépendances",
-                "Bases de données : SQL (PostgreSQL/MySQL), notions NoSQL",
+                "Tests : JUnit 5, tests d’intégration, TDD",
+                "Maven, gestion des dépendances",
+                "Bases de données : SQL (PostgreSQL/MySQL), NoSQL, Spring Data",
                 "Web : HTML5, CSS3, notions d’accessibilité",
                 "Architecture : MVC, principes SOLID, UML",
-                "CI/CD : Git, GitHub, déploiement sur Render (Docker)"
+                "CI/CD : Git, GitHub Action, Gitlab, Docker"
         );
     }
     private List<String> tools() { return List.of("IntelliJ IDEA /", " Git & GitHub /", " Maven /", " Postman /", " Docker (basics) /", " Trello / Jira "); }
