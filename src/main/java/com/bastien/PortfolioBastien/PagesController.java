@@ -21,13 +21,13 @@ public class PagesController {
 
     private List<String> hardSkills() {
         return List.of(
-                "DevOps, Java 21, API Streams, CI/CD, Spring Security, MangoDB, MySQL, NoSQL",
+                "DevOps, Java 21, API Streams, CI/CD, Spring Security, MongoDB, MySQL, NoSQL",
                 "Spring Boot (Web MVC, Validation, DevTools), Thymeleaf",
                 "Tests : JUnit 5, tests d’intégration, TDD",
                 "Maven, gestion des dépendances",
                 "Bases de données : SQL (PostgreSQL/MySQL), NoSQL, Spring Data",
                 "Web : HTML5, CSS3, notions d’accessibilité",
-                "Architecture : MVC, principes SOLID, UML",
+                "Architecture : MVC, Microservices, principes SOLID, UML",
                 "CI/CD : Git, GitHub Action, Gitlab, Docker"
         );
     }
