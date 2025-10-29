@@ -7,49 +7,308 @@
 
 <main class="container">
     <section class="card">
-        <h2>Compétences techniques</h2>
-        <div class="grid cols-2">
-            <ul class="mb-0">
-                <li th:each="s : ${skills}" th:text="${s}">Compétence</li>
-            </ul>
-            <div>
-                <h3>Outils</h3>
-                <div class="badges">
-                    <span class="badge" th:each="t : ${tools}" th:text="${t}">Outil</span>
+        <h2>Compétences</h2>
+        <p class="text-muted">Un aperçu visuel de mes domaines clés, compétences et outils.</p>
+
+        <!-- Styles spécifiques à la page (aucune dépendance externe) -->
+        <style>
+            /* Grille */
+            .skills-grid {
+              display: grid;
+              grid-template-columns: repeat(12, 1fr);
+              gap: 16px;
+            }
+
+            .skill-card {
+              grid-column: span 6;
+              background: var(--card-bg);
+              border: 1px solid var(--border);
+              border-radius: 16px;
+              padding: 18px;
+              box-shadow: var(--shadow);
+              transition: transform .15s ease, box-shadow .2s ease, border-color .2s ease;
+            }
+            .skill-card:hover {
+              transform: translateY(-2px);
+              box-shadow: 0 10px 24px rgba(0,0,0,.12);
+              border-color: rgba(120,150,255,.45);
+            }
+
+            .skill-head { display:flex; align-items:center; gap:12px; margin-bottom:10px; }
+            .skill-emoji {
+              width:42px; height:42px; display:grid; place-items:center;
+              border-radius:12px; font-size:22px; background: var(--section-bg);
+              border: 1px solid var(--border);
+            }
+            .skill-title { margin:0; font-size:1.08rem; }
+            .skill-sub { margin:0; color:var(--text-muted); }
+
+            .line { height:1px; background: var(--border); margin:12px 0 10px; }
+
+            /* Titres de section */
+            .group-title {
+              font-weight:600; color:var(--text-muted);
+              margin:6px 0 2px; display:flex; align-items:center; gap:8px;
+            }
+            .group-title::before {
+              content: ""; width:8px; height:8px; border-radius:50%;
+              background: #6b8bff; /* bleu plus visible */
+              box-shadow: 0 0 0 3px rgba(107,139,255,.25);
+            }
+            .group-title.tools::before {
+              background: #3dd5af; /* vert plus visible */
+              box-shadow: 0 0 0 3px rgba(61,213,175,.25);
+            }
+
+            /* CHIPS améliorés */
+            .chips { display:flex; flex-wrap:wrap; gap:8px; margin:6px 0; }
+
+            /* === COMPÉTENCES (bleu) === */
+.chip {
+  border-radius: 999px;
+  padding: 6px 11px;
+  font-size: .9rem;
+  font-weight: 500;
+  backdrop-filter: blur(4px);
+  transition: background .2s, border-color .2s, color .2s;
+}
+
+/* Mode clair */
+body:not(.dark-mode) .chip {
+  background: #e7edff;              /* bleu clair visible */
+  border: 1px solid #8aa2ff;
+  color: #2a357d;                    /* texte foncé lisible */
+}
+
+/* Mode sombre */
+body.dark-mode .chip {
+  background: rgba(108,141,255,.20);
+  border: 1px solid rgba(108,141,255,.55);
+  color: #dce3ff;
+}
+
+/* === OUTILS (vert) === */
+.chip.tool {
+  border-radius: 999px;
+  padding: 6px 11px;
+  font-size: .9rem;
+  font-weight: 500;
+  backdrop-filter: blur(4px);
+}
+
+/* Mode clair */
+body:not(.dark-mode) .chip.tool {
+  background: #d9f7ed;              /* vert pastel visible */
+  border: 1px solid #60d3b2;
+  color: #0b4b41;                    /* texte foncé pour contraste */
+}
+
+/* Mode sombre */
+body.dark-mode .chip.tool {
+  background: rgba(61,213,175,.22);
+  border: 1px solid rgba(61,213,175,.55);
+  color: #d7fff1;
+}
+
+            @media (max-width: 980px) {
+              .skill-card { grid-column: span 12; }
+            }
+        </style>
+
+
+        <div class="skills-grid">
+            <!-- Back-end -->
+            <article class="skill-card">
+                <div class="skill-head">
+                    <div class="skill-emoji">🛠️</div>
+                    <div>
+                        <h3 class="skill-title">Back-end</h3>
+                        <p class="skill-sub">API & services robustes</p>
+                    </div>
                 </div>
+                <div class="line"></div>
+                <div class="group-title">Compétences</div>
+                <div class="chips">
+                    <span class="chip">API REST</span>
+                    <span class="chip">Microservices</span>
+                    <span class="chip">Architecture modulaire</span>
+                    <span class="chip">Asynchrone & threads</span>
+                </div>
+                <div class="group-title tools">Outils / Technologies</div>
+                <div class="chips">
+                    <span class="chip tool">Java</span>
+                    <span class="chip tool">Spring Boot</span>
+                    <span class="chip tool">Spring Data JPA</span>
+                    <span class="chip tool">Spring Security</span>
+                    <span class="chip tool">Spring Cloud</span>
+                    <span class="chip tool">IntelliJ</span>
+                </div>
+            </article>
 
-                <h3>Langues</h3>
-                <ul class="mb-0">
-                    <li th:each="l : ${languages}" th:text="${l}">Langue</li>
-                </ul>
-            </div>
-        </div>
-    </section>
+            <!-- Base de données -->
+            <article class="skill-card">
+                <div class="skill-head">
+                    <div class="skill-emoji">🗄️</div>
+                    <div>
+                        <h3 class="skill-title">Base de données</h3>
+                        <p class="skill-sub">Conception & accès aux données</p>
+                    </div>
+                </div>
+                <div class="line"></div>
+                <div class="group-title">Compétences</div>
+                <div class="chips">
+                    <span class="chip">Modélisation UML</span>
+                    <span class="chip">SQL CRUD</span>
+                    <span class="chip">Interaction ORM</span>
+                </div>
+                <div class="group-title tools">Outils / Technologies</div>
+                <div class="chips">
+                    <span class="chip tool">MySQL</span>
+                    <span class="chip tool">SQL</span>
+                    <span class="chip tool">Postman</span>
+                    <span class="chip tool">MongoDB (NoSQL)</span>
+                </div>
+            </article>
 
-    <section class="grid cols-3">
-        <div class="item">
-            <h3 class="mt-0">Qualité</h3>
-            <ul>
-                <li>Tests JUnit, validations, contrôleurs testables.</li>
-                <li>Convention de code, revues, documentation Javadoc.</li>
-                <li>Respect des principes SOLID & SRP.</li>
-            </ul>
-        </div>
-        <div class="item">
-            <h3 class="mt-0">Backend Web</h3>
-            <ul>
-                <li>Spring MVC, contrôleurs REST, formulaires & validation.</li>
-                <li>Templates Thymeleaf et ressources statiques.</li>
-                <li>Gestion d’erreurs & pages personnalisées.</li>
-            </ul>
-        </div>
-        <div class="item">
-            <h3 class="mt-0">Déploiement</h3>
-            <ul>
-                <li>Build Maven, Maven Wrapper.</li>
-                <li>Docker (runtime JRE, image multi-étapes).</li>
-                <li>Render : déploiement continu sur `git push`.</li>
-            </ul>
+            <!-- Gestion de projet & agiles -->
+            <article class="skill-card">
+                <div class="skill-head">
+                    <div class="skill-emoji">📅</div>
+                    <div>
+                        <h3 class="skill-title">Gestion de projet & méthodes agiles</h3>
+                        <p class="skill-sub">Organisation & livraison continue</p>
+                    </div>
+                </div>
+                <div class="line"></div>
+                <div class="group-title">Compétences</div>
+                <div class="chips">
+                    <span class="chip">Sprints</span>
+                    <span class="chip">User stories</span>
+                    <span class="chip">Veille technologique</span>
+                </div>
+                <div class="group-title tools">Outils / Technologies</div>
+                <div class="chips">
+                    <span class="chip tool">Scrum</span>
+                    <span class="chip tool">Kanban</span>
+                    <span class="chip tool">Notion</span>
+                </div>
+            </article>
+
+            <!-- Versioning & collaboration -->
+            <article class="skill-card">
+                <div class="skill-head">
+                    <div class="skill-emoji">🌿</div>
+                    <div>
+                        <h3 class="skill-title">Versioning & collaboration</h3>
+                        <p class="skill-sub">Code en équipe</p>
+                    </div>
+                </div>
+                <div class="line"></div>
+                <div class="group-title">Compétences</div>
+                <div class="chips">
+                    <span class="chip">Gestion de code source en équipe</span>
+                </div>
+                <div class="group-title tools">Outils / Technologies</div>
+                <div class="chips">
+                    <span class="chip tool">Git</span>
+                    <span class="chip tool">GitHub</span>
+                </div>
+            </article>
+
+            <!-- Test & qualité -->
+            <article class="skill-card">
+                <div class="skill-head">
+                    <div class="skill-emoji">✅</div>
+                    <div>
+                        <h3 class="skill-title">Test & qualité logicielle</h3>
+                        <p class="skill-sub">Fiabilité & couverture</p>
+                    </div>
+                </div>
+                <div class="line"></div>
+                <div class="group-title">Compétences</div>
+                <div class="chips">
+                    <span class="chip">Tests unitaires</span>
+                    <span class="chip">TDD</span>
+                    <span class="chip">Suivi des rapports</span>
+                </div>
+                <div class="group-title tools">Outils / Technologies</div>
+                <div class="chips">
+                    <span class="chip tool">JUnit</span>
+                    <span class="chip tool">Mockito</span>
+                    <span class="chip tool">Pyramide de tests</span>
+                </div>
+            </article>
+
+            <!-- Déploiement & environnements -->
+            <article class="skill-card">
+                <div class="skill-head">
+                    <div class="skill-emoji">🚀</div>
+                    <div>
+                        <h3 class="skill-title">Déploiement & environnements</h3>
+                        <p class="skill-sub">CI/CD & conteneurs</p>
+                    </div>
+                </div>
+                <div class="line"></div>
+                <div class="group-title">Compétences</div>
+                <div class="chips">
+                    <span class="chip">Config environnements dev</span>
+                    <span class="chip">Config déploiement</span>
+                </div>
+                <div class="group-title tools">Outils / Technologies</div>
+                <div class="chips">
+                    <span class="chip tool">GitHub Actions</span>
+                    <span class="chip tool">DockerHub</span>
+                    <span class="chip tool">Docker</span>
+                    <span class="chip tool">Maven</span>
+                    <span class="chip tool">GitLab</span>
+                </div>
+            </article>
+
+            <!-- Architecture logicielle -->
+            <article class="skill-card">
+                <div class="skill-head">
+                    <div class="skill-emoji">🏗️</div>
+                    <div>
+                        <h3 class="skill-title">Architecture logicielle</h3>
+                        <p class="skill-sub">Modèles & styles</p>
+                    </div>
+                </div>
+                <div class="line"></div>
+                <div class="group-title">Compétences</div>
+                <div class="chips">
+                    <span class="chip">Conception d’architecture</span>
+                    <span class="chip">Modèles & styles logiciels</span>
+                </div>
+                <div class="group-title tools">Outils / Technologies</div>
+                <div class="chips">
+                    <span class="chip tool">UML</span>
+                    <span class="chip tool">DDD</span>
+                    <span class="chip tool">Architecture REST</span>
+                    <span class="chip tool">MVC</span>
+                </div>
+            </article>
+
+            <!-- Sécurité -->
+            <article class="skill-card">
+                <div class="skill-head">
+                    <div class="skill-emoji">🔒</div>
+                    <div>
+                        <h3 class="skill-title">Sécurité & authentification</h3>
+                        <p class="skill-sub">Accès & protection</p>
+                    </div>
+                </div>
+                <div class="line"></div>
+                <div class="group-title">Compétences</div>
+                <div class="chips">
+                    <span class="chip">Authentification sécurisée</span>
+                    <span class="chip">Gestion des accès</span>
+                </div>
+                <div class="group-title tools">Outils / Technologies</div>
+                <div class="chips">
+                    <span class="chip tool">OAuth2</span>
+                    <span class="chip tool">Spring Security</span>
+                </div>
+            </article>
         </div>
     </section>
 </main>

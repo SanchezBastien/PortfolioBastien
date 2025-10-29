@@ -78,7 +78,7 @@ public class PagesController {
         common(model);
         model.addAttribute("active", "apropos");
         model.addAttribute("aboutIntro", """
-        Après une reconversion réussie, j’apporte à chaque projet une approche orientée qualité, sécurité et tests, avec un souci constant de lisibilité du code et de performance.
+        Fort d'une licence en programmation java, j’apporte une approche orientée qualité, sécurité et tests, avec une exigence constante de lisibilité du code et de performance.
         Mon objectif : comprendre les besoins, concevoir des solutions fiables et les livrer avec soin.
 """);
         return "apropos";

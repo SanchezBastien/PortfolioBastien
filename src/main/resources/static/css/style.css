@@ -303,14 +303,25 @@ body.dark-mode section:nth-child(even) {
   margin-top: 10px;
 }
 
-.timeline-item .tag.formation {
-  background-color: #dceeff;
-  color: var(--color-primary);
+/* Badge EXPÉRIENCE (tu peux laisser celui-ci tel qu’il est si il fonctionne déjà) */
+.timeline-item .tag.experience {
+  background-color: #1B5E20;
+  border-color: #3DD6A7; /* ou #3ad29f selon ton thème */
+  color: #ffffff;
 }
 
-.timeline-item .tag.experience {
-  background-color: #dcf5eb;
-  color: var(--color-secondary);
+/* Badge FORMATION – même format, mais version bleue */
+.timeline-item .tag.formation {
+  background-color: #1E3A8A;   /* Bleu foncé lisible */
+  border-color: #4D8EFF;       /* Bleu clair pour bordure */
+  color: #ffffff;
+}
+
+/* Mode sombre – harmonisation */
+body.dark-mode .timeline-item .tag.formation {
+  background-color: #2F5FE0;  /* Un bleu plus vif pour ressortir en sombre */
+  border-color: #7CA9FF;
+  color: #ffffff;
 }
 
 @media (max-width: 768px) {
